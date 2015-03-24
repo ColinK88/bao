@@ -39,18 +39,18 @@ def about_us(request):
 
 def tutorial(request):
 	# get the tutorial objects
-	t = Tutorial.objects.get(name='Introduction')
+	#t = Tutorial.objects.get(name='Introduction')
 
 	user = request.user.id
 	if user:
 		try:
 			up = UProfile.objects.get(user=user)
-			context_dict =  {'tut':t, 'up': up}
+			context_dict =  {'up': up}
 		except UProfile.DoesNotExist:
 			up = None
-			context_dict = {'tut':t, 'up':up}	
+			context_dict = {'up':up}	
 	else: 
-		context_dict={'tut':t}	
+		context_dict={}	
 
 	return render(request, 'Bao/tutorial.html', context_dict)
 

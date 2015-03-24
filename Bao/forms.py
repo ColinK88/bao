@@ -13,4 +13,3 @@ class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model=UProfile
 		fields=('picture',)	
-		#score=forms.IntegerField(widget=forms.TextInput(attrs={'readonly':'readonly'}))	

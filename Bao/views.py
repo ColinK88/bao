@@ -5,6 +5,7 @@ from Bao.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from PIL import Image
 
 # index page is the Bao homepage. 
 def index(request):
@@ -22,21 +23,6 @@ def index(request):
 		context_dict = {}
 
 	return render(request, 'Bao/index.html', context_dict)
-
-def bao_rules(request):
-	user = request.user.id
-	if user:
-		try:
-			up = UProfile.objects.get(user=user)
-			context_dict =  {'up': up}
-
-		except UProfile.DoesNotExist:
-			up = None
-			context_dict = {}	
-
-	else:
-		context_dict={}
-	return render(request, 'Bao/Bao_rules.html',context_dict)
 
 def about_us(request):
 	user = request.user.id

@@ -5,9 +5,6 @@ from django.contrib.auth.models import User
 class UProfile(models.Model):
 	# Link the UProfile to the User model instance.
 	user = models.OneToOneField(User)
-	#user = models.OneToOneField(Game)
-	#username = models.CharField(default='',unique=True, max_length=128, null=False)
-	#password = models.CharField(default='',max_length=128, null=False)
 
 	# User already comes with attributes - username and password 
 	# Bao allows their users to upload a profile picture if they 

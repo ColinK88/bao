@@ -5,8 +5,6 @@ urlpatterns = patterns('',
 
 	url(r'^$', views.index, name = 'index_Bao'),
 
-	url(r'^bao_rules/$', views.bao_rules, name = 'bao_rules'),
-
 	url(r'^about_us/$', views.about_us, name = 'about_us'),
 
 	url(r'^tutorial/$', views.tutorial, name='tutorial'),
@@ -19,7 +17,7 @@ urlpatterns = patterns('',
 
 	url(r'^logout/$', views.user_logout, name='logout_Bao'),
 	
-	url(r'^like_tutorial/$', views.like_tutorial, name="like_tutorial"),
+	#url(r'^like_tutorial/$', views.like_tutorial, name="like_tutorial"),
 
 	url(r'^increment_score/$', views.increment_score, name="increment_score"),
 

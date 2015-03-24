@@ -9,41 +9,42 @@
 	<div class="page-header">
 		<h1> How to play Bao</h1>
 	</div>
-	<div>
+	
+	<div id="tutorial_text">
+		<link type="text/css" rel="stylesheet" href="{% static 'css/headings.css' %}">
 		<p> Here you will take your first steps to being crowned Bao Master. Good Luck and have fun!</p><br />	
 
 		<h2> The start of the game </h2>
 		<p>Each player starts with two balls in each of their pits. Player 1 (you if you are playing the computer) plays out their moves on the bottom half of the board, while player 2 (or computer) plays from the top half.
 
-		The aim of the game is </p>
+		The aim of the game is to empty your opponents front row (the row closest to your half) - or leave your opponent with one or fewer balls in each of their pits. </p>
+
+		<h3> How to make a move </h3>
+		<p> A turn consists of one or more moves. You can start a move from any of the pits in your half of the board which contains two or more balls. To start a move from a pit simply click in the pit circle. Now you have to choose a direction to move in, do this by clicking the pit to the left or the right of your chosen starting pit.</p>
+		<p>A move sows balls from the starting pit one at a time into pits in the chosen direction. If the last pit sown into is empty, the move ends and your opponents turn starts. If it is not empty the last pit sown into now acts as the start pit and the move continues. This process of starting again can happen quite a few times in a turn.</p>
+
+		<h4>How do you take from an opponent</h4>
+		<p> If any part of the turn ends on a non-empty pit in your front row, you steal the balls in your opponent's adjacent pit before continuing to use this last pit of the move as a starting pit. </p>
+
+		<h5>How does it end</h5>
+		<p> The game ends if one player's (the computer is a player too) front row is empty or if someone has only pits with one or fewer balls. </p>
 	</div>
 
 
+	
 	<!-- to make use of AJAX in our webapp we will allow logged in users to like the tutorial -->
 
-	<p> 
-
+<!--
 	<strong id="like_count">{{ tut.likes }}</strong> people think this is helpful.
 	{% if user.is_authenticated %}
-		{% csrf_token %}
-		<input type="button" id="likes" value="Like" />
 
-		<!--
 		<button id="likes" data-tutid="{{tut.name}}" type="button">
 		<span class="glyphicon glyphicon-thumbs-up"></span>Like
 		</button>
-		-->
+	
 	{% endif %}		
-		<!--
-		<strong id="like_count">{{ tut.likes }}</strong> people think this is helpful.
-		{% if user.is_authenticated %}
-			<button id="likes" data-tutid="Introduction" class="btn btn-primary" type="button">
-			<span class="glyphicon glyphicon-thumbs-up"></span>
-			Like
-			</button>
-		{% endif %}
-		-->
-	</p>
+	
+-->
 		
 {% endblock %}
 
@@ -51,8 +52,11 @@
 <!-- side block contains the profile information if registered. If not - a message to register. -->
 {% block side_block %}
 	{% if user.is_authenticated %}	
-	<!-- hardcoded url -->	
-	<img src ="/media/{{up.picture}}" alt="{{user.username}} avatar" height = "200" width="150"/>
+		{% if up.picture %}
+		<img src ="/media/{{up.picture}}" alt="{{user.username}} avatar" height = "200" width="150"/>
+		{% else %}
+		<img src="{% static "images/defaultPic.jpg" %}" alt="default pic" height = "200" width="150" />
+		{% endif %}
 	<br />
 	<br />
 	Games won: {{up.score}}
@@ -60,6 +64,8 @@
     <a href="{% url 'logout_Bao' %}?next=/Bao/">Logout</a> 
 	
 	{% else %}
+	<img src="{% static "images/bao.jpg" %}" alt="bao logo" height="180" width="150" />
+	<br />
 	<p> If you want to play Bao against the computer <a href="{% url 'register_Bao' %}">sign up now!</a></p>
 	{% endif %}
 {% endblock %}	

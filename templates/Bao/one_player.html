@@ -11,7 +11,7 @@
 		    <!-- Including our JavaScript file, here in the "scripts" folder -->
 	</div>
 	<div>	
-		<script type="text/javascript" src="{% static 'js/bao_comp.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/bao_comp_new.js' %}"></script>
 
 		<canvas id="canvas">You browser does not support canvas :(</canvas>
 
@@ -23,11 +23,11 @@
 <!-- side block contains the profile information if registered. If not - a message to register. -->
 {% block side_block %}
 	{% if user.is_authenticated %}	
-	<!-- hardcoded url -->
-	<!--if up.picture: -->
+		{% if up.picture %}
 		<img src ="/media/{{up.picture}}" alt="{{user.username}} avatar" height = "200" width="150"/>
-	<!--else:
-		<img src="{% static 'standard_pic' %}" alt="standard pic" height = "200" width="150" />-->
+		{% else %}
+		<img src="{% static "images/defaultPic.jpg" %}" alt="default pic" height = "200" width="150" />
+		{% endif %}
 	<br />
 	<br />
 	Games won: {{up.score}}
@@ -35,9 +35,9 @@
 	
 	<!-- temp button to increment the score -->
 	<!--<form id="inc" method="post" action="{% url 'increment_score' %}">-->
+	<p> Only press this button at the end of the game if you win! We trust you!</p>
 	<form id="inc" method="post" action="{% url 'increment_score' %}">
 		{% csrf_token %}
-
 		<input type="submit" value="Increment games won" />
 	</form>
 

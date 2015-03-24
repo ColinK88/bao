@@ -17,12 +17,14 @@
 		{{user_form.as_p}}
 		{{profile_form.as_p}}
 		<br />
-		<input type="submit" name="submit" value="Register" />
+		<input type="submit" name="submit" value="Register" class="btn btn-primary"/>
 	</form>
 	
 {% endblock %}
 
 {% block side_block %}
-	<p>Once you're registered you can play Bao! </p>
+	<img src="{% static "images/bao.jpg" %}" alt="bao logo" height="180" width="150" />
+	<hr />
+	<p>Once you're registered you can play Bao against the computer! </p>
 {% endblock %}
 

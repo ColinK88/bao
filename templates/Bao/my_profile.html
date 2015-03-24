@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+{% extends 'base_Bao.html' %}
+{% load staticfiles %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block body_block %}
+	<div class="page-header">
+
+		<h1>Two Player Mode</h1>	
+
+	</div>	
+	
+	<div>
+		<script type="text/javascript" src="{% static 'js/bao_2Player.js' %}"></script>
+
+		<canvas id="canvas">You browser does not support canvas :(</canvas>
+ 
+	</div>	
+	
+{% endblock %}	
+
+{% block side_block %}
+	{% if user.is_authenticated %}	
+	<!-- hardcoded url -->	
+	<img src ="/media/{{up.picture}}" alt="{{user.username}} avatar" height = "200" width="150"/>
+	<br />
+	<br />
+	Games won: {{up.score}}
+	
+	{% else %}
+	<p> If you want to play Bao <a href="{% url 'register_Bao' %}">sign up now!</a></p>
+	{% endif %}
+{% endblock %}	
+
+
+

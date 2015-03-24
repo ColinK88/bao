@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'base_BAO.html' %}
+{% load staticfiles %}
+	
+{% block title %}Register with BAO{% endblock %} 
+
+{% block body_block %}
+
+	<h1>Register to play Bao</h1>
+	
+	<h2 class="form-signin-heading"> Sign up here: </h2>
+
+	<form id = "signup_form" method = "post" action ="{% url 'register_Bao' %}" enctype = "multipart/form-data">
+		{% csrf_token %}
+		<br />
+		<!-- display the form neatly - one element per line -->
+		{{user_form.as_p}}
+		{{profile_form.as_p}}
+		<br />
+		<input type="submit" name="submit" value="Register" />
+	</form>
+	
+{% endblock %}
+
+{% block side_block %}
+	<p>Once you're registered you can play Bao! </p>
+{% endblock %}
+

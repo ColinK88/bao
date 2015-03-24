@@ -7,8 +7,11 @@ workon virtualEnvironmentName
 install requirements in the requirements file (requirements.txt)
 
 run the following commands:
+
 python manage.py makemigrations Bao
+
 python manage.py migrate
+
 python manage.py runserver
 
 now in your browser type the following url:
